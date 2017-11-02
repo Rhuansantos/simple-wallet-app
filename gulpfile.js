@@ -8,16 +8,16 @@ const buffer = require('vinyl-buffer');
 const minify = require('gulp-minifier');
 
 gulp.task('scss', () => {
-  return gulp.src('./scss/**')
+  return gulp.src('src/scss/**')
   .pipe(sass().on('error', sass.logError))
   .on('error', swallowError)
-  .pipe(gulp.dest('./css'))
+  .pipe(gulp.dest('src/css'))
   .pipe(browserSync.stream())
 
 });
 
 gulp.task('es6', () => {
-  browserify('js/main.js')
+  browserify('src/js/main.js')
     .transform('babelify', {
       presets: ['es2015']
     })
@@ -25,16 +25,16 @@ gulp.task('es6', () => {
     .pipe(source('main.js'))
     .on('error', swallowError)
     .pipe(buffer())
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('src/js/build'));
 });
 
 gulp.task('serve', () => {
     browserSync.init({
-        server: "./"
+        server: "./src"
     });
-    gulp.watch("./scss/**", ['scss']);
-    gulp.watch("./js/**", ['es6']);
-    gulp.watch("/*.html").on('change', browserSync.reload);
+    gulp.watch("src/scss/**", ['scss']);
+    gulp.watch("src/js/**", ['es6']);
+    gulp.watch("src/*.html").on('change', browserSync.reload);
 
 });
 
