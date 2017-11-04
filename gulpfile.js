@@ -8,7 +8,7 @@ const buffer = require('vinyl-buffer');
 const minify = require('gulp-minifier');
 
 gulp.task('scss', () => {
-  return gulp.src('src/scss/**')
+  return gulp.src('src/scss/main.scss')
   .pipe(sass().on('error', sass.logError))
   .on('error', swallowError)
   .pipe(gulp.dest('src/css'))

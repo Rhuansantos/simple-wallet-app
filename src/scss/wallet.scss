@@ -1,0 +1,133 @@
+@import "components/variables";
+
+body{
+	background: white;
+	font-family: 'Open Sans', sans-serif;
+	background: $yellow;
+	padding: 50px;
+}
+
+main{
+	max-width: 1100px;
+	margin: 0 auto;
+	background: white;
+	border-radius: 7px;
+	box-shadow: 0px 0px 49px -18px rgba(0,0,0,0.75);
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	background: #f2f2f2;
+	h1{
+		font-size: 24px;
+		font-weight: 400;
+		color: $headerColor;
+	}
+}
+
+#cardSection{
+	width: 280px;
+	padding: 50px;
+	h1{
+		margin-bottom: 50px;
+		padding-left: 20px;
+	}
+	#cards li{
+		width: 250px;
+		height: 150px;
+		margin: 0 auto;
+		box-sizing: border-box;
+		padding: 10px;
+		background:white;
+		border-radius: 5px;
+		margin-bottom: 40px;
+		list-style: none;
+		border: solid 2px #e1e1e1;
+		transition: all 200ms ease-in;
+		transform: scale(1);
+		cursor: pointer;
+		&:hover{
+			border:solid 5px $poloBlue;
+			transition: all 200ms ease-in;
+			transform: scale(1.1);
+		}
+		p, img{
+			color: $gray;
+			margin-bottom: 15px;
+		}
+	}
+	.active {
+		border:solid 5px $poloBlue !important;
+	}
+}
+
+#balanceSection{
+	width: 620px;
+	min-width: auto;
+	background:white;
+	padding: 50px;
+	border-radius: 0px 7px 7px 50px / 0px 7px 7px 0px;
+	header{
+		border-bottom: 1px solid $gray;
+		display: flex;
+		height: 90px;
+		margin-bottom: 50px;
+		.balance{
+			margin-left: auto;
+			font-size: 36px;
+			font-weight: 700;
+			margin-top: -7px;
+		}
+		.cents{
+			font-size: 22px;
+			position: relative;
+			top: -10px;
+		}
+	}
+
+	#transactionList li{
+		list-style: none;
+		margin-bottom: 50px;
+		display: flex;
+		justify-content: space-between;
+		div{
+			flex-grow: 1;
+			h2{
+				color: $darkGray;
+				font-weight: 700;
+				font-size: 18px;
+				margin-bottom: 10px;
+			}
+			p{
+				color: $gray;
+				font-size: 14px;
+			}
+		}
+		.transactionIcons{
+			flex-grow: 0;
+			width: 20px;
+			height: 20px;
+			text-align: center;
+			border: solid 2px $gray;
+			border-radius: 30px;
+			font-size: 22px;
+			font-weight: 700;
+			margin-right: 30px;
+			margin-top: 15px;
+				.plus{
+					display: block;
+					margin-top: -6px;
+				}
+				.minus{
+					display: block;
+					margin-top: -7px;
+				}
+		}
+		.transactionValue{
+			font-size: 18px;
+			font-weight: 700;
+			color: $green;
+			margin-top: 15px;
+		}
+	}
+}
+
