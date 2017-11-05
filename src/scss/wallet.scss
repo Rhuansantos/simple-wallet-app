@@ -4,7 +4,8 @@ body{
 	background: white;
 	font-family: 'Open Sans', sans-serif;
 	background: $yellow;
-	padding: 50px;
+  padding: 50px;
+  transition: all .5s ease-in-out;
 }
 
 main{
@@ -15,7 +16,6 @@ main{
 	box-shadow: 0px 0px 49px -18px rgba(0,0,0,0.75);
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: space-around;
 	background: #f2f2f2;
 	h1{
 		font-size: 24px;
@@ -23,49 +23,72 @@ main{
 		color: $headerColor;
 	}
 }
+@media (max-width: 870px) { 
+	main{
+		width: 100%;
+	}
+	body{
+		padding: 10px;
+	}
+}
 
 #cardSection{
-	width: 280px;
-	padding: 50px;
+  flex-grow: 2;
+  padding: 50px;
+  // for cards section
+  @media (max-width: 770px) { 
+    padding: 10px;
+    overflow: hidden;
+  }
 	h1{
 		margin-bottom: 50px;
 		padding-left: 20px;
 	}
-	#cards li{
-		width: 250px;
-		height: 150px;
-		margin: 0 auto;
-		box-sizing: border-box;
-		padding: 10px;
-		background:white;
-		border-radius: 5px;
-		margin-bottom: 40px;
-		list-style: none;
-		border: solid 2px #e1e1e1;
-		transition: all 200ms ease-in;
-		transform: scale(1);
-		cursor: pointer;
-		&:hover{
-			border:solid 5px $poloBlue;
+	#cards {
+		li{
+      max-width: 250px;
+      min-width: 200px;
+			height: 150px;
+			margin: 0 auto;
+			box-sizing: border-box;
+			padding: 10px;
+			background:white;
+			border-radius: 5px;
+			margin-bottom: 40px;
+			list-style: none;
+			border: solid 2px #e1e1e1;
 			transition: all 200ms ease-in;
-			transform: scale(1.1);
-		}
-		p, img{
-			color: $gray;
-			margin-bottom: 15px;
-		}
-	}
-	.active {
-		border:solid 5px $poloBlue !important;
-	}
+			transform: scale(1);
+			cursor: pointer;
+			&:hover{
+				border:solid 5px $poloBlue;
+				transition: all 200ms ease-in;
+				transform: scale(1.1);
+      }
+			p, img{
+				color: $gray;
+				margin-bottom: 15px;
+			}
+    }
+    // for li Cards
+    @media (max-width: 770px) { 
+      display: flex;
+      }
+		.active {
+			border:solid 5px $poloBlue !important;
+    }
+  }
 }
 
 #balanceSection{
-	width: 620px;
-	min-width: auto;
+  flex-grow: 5;
 	background:white;
 	padding: 50px;
-	border-radius: 0px 7px 7px 50px / 0px 7px 7px 0px;
+  border-radius: 0px 7px 7px 50px / 0px 7px 7px 0px;
+  // for balance section
+  @media (max-width: 770px) { 
+    padding: 10px;
+  }
 	header{
 		border-bottom: 1px solid $gray;
 		display: flex;
@@ -115,11 +138,13 @@ main{
 			margin-top: 15px;
 				.plus{
 					display: block;
-					margin-top: -6px;
+          margin-top: -6px;
+          color: $darkGray;
 				}
 				.minus{
 					display: block;
-					margin-top: -7px;
+          margin-top: -7px;
+          color: $darkGray;
 				}
 		}
 		.transactionValue{
@@ -130,4 +155,3 @@ main{
 		}
 	}
 }
-

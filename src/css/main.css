@@ -18,7 +18,8 @@ body {
   background: white;
   font-family: 'Open Sans', sans-serif;
   background: #ffcc66;
-  padding: 50px; }
+  padding: 50px;
+  transition: all .5s ease-in-out; }
 
 main {
   max-width: 1100px;
@@ -28,21 +29,31 @@ main {
   box-shadow: 0px 0px 49px -18px rgba(0, 0, 0, 0.75);
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
   background: #f2f2f2; }
   main h1 {
     font-size: 24px;
     font-weight: 400;
     color: #707584; }
 
+@media (max-width: 870px) {
+  main {
+    width: 100%; }
+  body {
+    padding: 10px; } }
+
 #cardSection {
-  width: 280px;
+  flex-grow: 2;
   padding: 50px; }
+  @media (max-width: 770px) {
+    #cardSection {
+      padding: 10px;
+      overflow: hidden; } }
   #cardSection h1 {
     margin-bottom: 50px;
     padding-left: 20px; }
   #cardSection #cards li {
-    width: 250px;
+    max-width: 250px;
+    min-width: 200px;
     height: 150px;
     margin: 0 auto;
     box-sizing: border-box;
@@ -62,15 +73,20 @@ main {
     #cardSection #cards li p, #cardSection #cards li img {
       color: #cccccc;
       margin-bottom: 15px; }
-  #cardSection .active {
+  @media (max-width: 770px) {
+    #cardSection #cards {
+      display: flex; } }
+  #cardSection #cards .active {
     border: solid 5px #8393CA !important; }
 
 #balanceSection {
-  width: 620px;
-  min-width: auto;
+  flex-grow: 5;
   background: white;
   padding: 50px;
   border-radius: 0px 7px 7px 50px / 0px 7px 7px 0px; }
+  @media (max-width: 770px) {
+    #balanceSection {
+      padding: 10px; } }
   #balanceSection header {
     border-bottom: 1px solid #cccccc;
     display: flex;
@@ -113,10 +129,12 @@ main {
       margin-top: 15px; }
       #balanceSection #transactionList li .transactionIcons .plus {
         display: block;
-        margin-top: -6px; }
+        margin-top: -6px;
+        color: #444751; }
       #balanceSection #transactionList li .transactionIcons .minus {
         display: block;
-        margin-top: -7px; }
+        margin-top: -7px;
+        color: #444751; }
     #balanceSection #transactionList li .transactionValue {
       font-size: 18px;
       font-weight: 700;
