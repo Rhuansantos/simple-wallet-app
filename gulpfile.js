@@ -22,8 +22,8 @@ gulp.task('es6', () => {
       presets: ['es2015']
     })
     .bundle()
-    .pipe(source('main.js'))
     .on('error', swallowError)
+    .pipe(source('main.js'))
     .pipe(buffer())
     .pipe(gulp.dest('src/js/build'));
 });
@@ -34,12 +34,13 @@ gulp.task('serve', () => {
     });
     gulp.watch("src/scss/**", ['scss']);
     gulp.watch("src/js/**", ['es6']);
+    gulp.watch("src/js/build/**", ['es6']).on('change', browserSync.reload);
     gulp.watch("src/*.html").on('change', browserSync.reload);
 
 });
 
 gulp.task('build', function() {
-  return gulp.src('src/**/*').pipe(minify({
+  return gulp.src(['src/**/*', '!src/js/core/', '!src/js/main.js']).pipe(minify({
     minify: true,
     collapseWhitespace: true,
     conservativeCollapse: true,

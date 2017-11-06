@@ -18,11 +18,12 @@ body {
   background: white;
   font-family: 'Open Sans', sans-serif;
   background: #ffcc66;
-  padding: 50px;
+  padding: 20px;
   transition: all .5s ease-in-out; }
 
 main {
   max-width: 1100px;
+  max-height: 700px;
   margin: 0 auto;
   background: white;
   border-radius: 7px;
@@ -43,7 +44,8 @@ main {
 
 #cardSection {
   flex-grow: 2;
-  padding: 50px; }
+  padding: 50px;
+  margin-bottom: 20px; }
   @media (max-width: 770px) {
     #cardSection {
       padding: 10px;
@@ -64,15 +66,17 @@ main {
     list-style: none;
     border: solid 2px #e1e1e1;
     transition: all 200ms ease-in;
-    transform: scale(1);
     cursor: pointer; }
     #cardSection #cards li:hover {
       border: solid 5px #8393CA;
-      transition: all 200ms ease-in;
-      transform: scale(1.1); }
+      transition: all 200ms ease-in; }
     #cardSection #cards li p, #cardSection #cards li img {
       color: #cccccc;
       margin-bottom: 15px; }
+    @media (max-width: 660px) {
+      #cardSection #cards li {
+        min-width: 300px;
+        margin: 0px 0px 30px 30px; } }
   @media (max-width: 770px) {
     #cardSection #cards {
       display: flex; } }
@@ -86,7 +90,7 @@ main {
   border-radius: 0px 7px 7px 50px / 0px 7px 7px 0px; }
   @media (max-width: 770px) {
     #balanceSection {
-      padding: 10px; } }
+      padding: 40px 10px 10px 10px; } }
   #balanceSection header {
     border-bottom: 1px solid #cccccc;
     display: flex;
@@ -101,13 +105,22 @@ main {
       font-size: 22px;
       position: relative;
       top: -10px; }
+  #balanceSection #containerList {
+    overflow: scroll;
+    height: auto;
+    max-height: 500px; }
+  #balanceSection .transactionList {
+    transition: all 5s; }
   #balanceSection #transactionList li {
     list-style: none;
     margin-bottom: 50px;
     display: flex;
+    overflow: scroll;
+    max-height: 200px;
     justify-content: space-between; }
     #balanceSection #transactionList li div {
-      flex-grow: 1; }
+      flex-grow: 1;
+      width: 0; }
       #balanceSection #transactionList li div h2 {
         color: #444751;
         font-weight: 700;
