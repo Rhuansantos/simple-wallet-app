@@ -3,16 +3,16 @@ import Wallet from './wallet';
 // waiting for the page loading
 window.addEventListener('load',() => {
 
-  let walletApp = Wallet.getInstance();
+  const walletApp = Wallet.getInstance();
 
   // listening to event click on the LI element inside of #cards
   document.querySelector('#cards').addEventListener('click', (e) => {
     if(e.target && e.target.nodeName == "LI") {
-      let id = e.target.getAttribute('data-id');
+      const id = e.target.getAttribute('data-id');
       walletApp.transactions(id);
 
       // 
-      let elements = document.querySelector('#cards').children;
+      const elements = document.querySelector('#cards').children;
       for (let i = 0; i < elements.length; ++i) {
           elements[i].classList.remove('active');
       }

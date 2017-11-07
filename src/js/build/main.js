@@ -108,7 +108,7 @@ var Wallet = function () {
     }
   }, {
     key: 'createCards',
-    value: function createCards() {
+    value: async function createCards() {
       var printContainer = document.querySelector('#cards');
       this.data.map(function (card, index) {
 
@@ -120,7 +120,7 @@ var Wallet = function () {
     }
   }, {
     key: 'transactions',
-    value: function transactions(_id, _data) {
+    value: async function transactions(_id, _data) {
       var _this2 = this;
 
       // start with the first card on the array

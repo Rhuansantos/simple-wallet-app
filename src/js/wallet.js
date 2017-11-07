@@ -40,8 +40,8 @@ constructor() {
   
   // current balance
   balance(_n){
-    let withdrawn = [];
-    let deposit   = [];
+    const withdrawn = [];
+    const deposit   = [];
     // mapping objects
     _n.map((transactions, index) => {
       if(transactions.price.charAt(0) === '-'){
@@ -52,16 +52,16 @@ constructor() {
     });
 
     // total of deposits and withdram = balance
-    let totalDeposit = deposit.reduce((sum, value) => sum + value);
-    let totalwithdrawn = withdrawn.reduce((sum, value) => sum + value);
-    let balance = totalDeposit + totalwithdrawn;
+    const totalDeposit = deposit.reduce((sum, value) => sum + value);
+    const totalwithdrawn = withdrawn.reduce((sum, value) => sum + value);
+    const balance = totalDeposit + totalwithdrawn;
     
     // return as a currency
     return balance.toLocaleString('de-DE');
   }
 
-  createCards() {
-    let printContainer = document.querySelector('#cards');
+  async createCards() {
+    const printContainer = document.querySelector('#cards');
       this.data.map((card, index) => {
 
         // HTML Template
@@ -78,18 +78,18 @@ constructor() {
       });
   }
 
-  transactions(_id, _data){
+  async transactions(_id, _data){
     // start with the first card on the array
     if(_id === undefined){
       _id = 0;
     }
 
-    let printContainer = document.querySelector('#transactionList');
+    const printContainer = document.querySelector('#transactionList');
     printContainer.innerHTML = null; // clean the old content before insert
 
     this.loadData().then((data) => { 
       // current balance
-      let balance = this.balance(data[_id].transactions);
+      const balance = this.balance(data[_id].transactions);
       document.querySelector('.balance').innerHTML = '$' + balance;
 
       //maping transactions
