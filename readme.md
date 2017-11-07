@@ -1,9 +1,9 @@
 # Red Ventures
-##simple-wallet-app
+## simple-wallet-app
 
 [live example](https://rhuansantos.com/red-ventures-simple-wallet-app/)
 
-###Instructions
+### Instructions
 
 1 - clone the project through terminal or download it as a zipfile [here](https://github.com/Rhuansantos/simple-wallet-app/archive/master.zip)
 
@@ -21,6 +21,3 @@
 4 - bring the server up by just typing `gulp`
 
 `gulp`
-
-
-
