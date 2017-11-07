@@ -18,7 +18,7 @@ window.addEventListener('load', function () {
       var id = e.target.getAttribute('data-id');
       walletApp.transactions(id);
 
-      // 
+      // adding active class to the list
       var elements = document.querySelector('#cards').children;
       for (var i = 0; i < elements.length; ++i) {
         elements[i].classList.remove('active');
@@ -108,19 +108,21 @@ var Wallet = function () {
     }
   }, {
     key: 'createCards',
-    value: function createCards() {
+    value: async function createCards() {
       var printContainer = document.querySelector('#cards');
       this.data.map(function (card, index) {
-
-        // HTML Template
-        var template = '\n          <li data-id=' + (card.id - 1) + '>\n            <img src="./img/visa.png" alt="card" />\n            <p>' + card.number + '</p>\n            <p>Valid Thru: ' + card.valid + '</p>\n          </li>\n        ';
+        // let active;
+        // if(index == 0){
+        //   active = 'active';
+        // }
+        var template = '\n          <li class="' + (index == 0 ? 'active' : '') + '" data-id=' + index + '>\n            <img src="./img/visa.png" alt="card" />\n            <p>' + card.number + '</p>\n            <p>Valid Thru: ' + card.valid + '</p>\n          </li>\n        ';
         // print html
-        printContainer.insertAdjacentHTML('afterbegin', template);
+        printContainer.insertAdjacentHTML('beforeend', template);
       });
     }
   }, {
     key: 'transactions',
-    value: function transactions(_id, _data) {
+    value: async function transactions(_id, _data) {
       var _this2 = this;
 
       // start with the first card on the array
@@ -149,7 +151,7 @@ var Wallet = function () {
 
           var template = '\n          <li>\n            <div class="transactionIcons"><span class="plus">+</span></div>\n            <div>\n              <h2>' + transaction.store + '</h2>\n              <p>' + transaction.description + ', ' + transaction.date + '</p>\n            </div>\n            <span class="transactionValue ' + transactionType + '">' + transaction.price + '</span>\n          </li>\n        ';
 
-          printContainer.insertAdjacentHTML('afterbegin', template);
+          printContainer.insertAdjacentHTML('beforeend', template);
         });
       }).catch(function (reason) {
         return console.log(reason.message);

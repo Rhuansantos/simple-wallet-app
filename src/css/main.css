@@ -109,6 +109,7 @@ main {
   flex-grow: 5;
   background: white;
   padding: 50px;
+  max-height: 600px;
   border-radius: 0px 7px 7px 50px / 0px 7px 7px 0px; }
   @media (max-width: 770px) {
     #balanceSection {
@@ -129,16 +130,18 @@ main {
       position: relative;
       top: -10px; }
   #balanceSection #containerList {
-    overflow: scroll;
+    overflow-y: scroll;
     height: auto;
     max-height: 500px; }
-  #balanceSection .transactionList {
-    transition: all 5s; }
+  #balanceSection #transactionList {
+    transition: all 5s;
+    padding-right: 10px;
+    height: 600px; }
   #balanceSection #transactionList li {
     list-style: none;
     margin-bottom: 50px;
     display: flex;
-    overflow: scroll;
+    overflow: hidden;
     max-height: 200px;
     justify-content: space-between; }
     #balanceSection #transactionList li div {

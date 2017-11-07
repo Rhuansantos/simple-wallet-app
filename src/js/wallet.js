@@ -63,17 +63,19 @@ constructor() {
   async createCards() {
     const printContainer = document.querySelector('#cards');
       this.data.map((card, index) => {
-
-        // HTML Template
+        // let active;
+        // if(index == 0){
+        //   active = 'active';
+        // }
         let template = `
-          <li data-id=${card.id - 1}>
+          <li class="${index == 0 ? 'active' : ''}" data-id=${index}>
             <img src="./img/visa.png" alt="card" />
             <p>${card.number}</p>
             <p>Valid Thru: ${card.valid}</p>
           </li>
         `;
         // print html
-        printContainer.insertAdjacentHTML('afterbegin', template);
+        printContainer.insertAdjacentHTML('beforeend', template);
 
       });
   }
@@ -115,7 +117,7 @@ constructor() {
           </li>
         `;
 
-          printContainer.insertAdjacentHTML('afterbegin', template);
+          printContainer.insertAdjacentHTML('beforeend', template);
       });
 
     }).catch(reason => console.log(reason.message));
