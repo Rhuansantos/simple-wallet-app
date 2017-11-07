@@ -13,19 +13,19 @@ window.addEventListener('load', function () {
   var walletApp = _wallet2.default.getInstance();
 
   // listening to event click on the LI element inside of #cards
-  document.getElementById("cards").addEventListener("click", function (e) {
+  document.querySelector('#cards').addEventListener('click', function (e) {
     if (e.target && e.target.nodeName == "LI") {
       var id = e.target.getAttribute('data-id');
       walletApp.transactions(id);
 
-      // checking the cards to add the active class
-      var elements = document.getElementById('cards').children;
+      // 
+      var elements = document.querySelector('#cards').children;
       for (var i = 0; i < elements.length; ++i) {
-        elements[i].classList.remove("active");
+        elements[i].classList.remove('active');
       }
-      e.target.classList.add("active");
+      e.target.classList.add('active');
     }
-  }, true);
+  });
 });
 
 },{"./wallet":2}],2:[function(require,module,exports){
@@ -62,8 +62,8 @@ var Wallet = function () {
 
   // singleton
   // assuming that the wallet app could be a part of an application 
-  // I have applied the singleton programming design
-  //  pattern so it can allow the application to have only one instance of the app.
+  // I have applied the singleton programming design pattern
+  // so it can allow the application to have only one instance of the app.
 
 
   _createClass(Wallet, [{
@@ -77,6 +77,9 @@ var Wallet = function () {
         return e;
       }
     }
+
+    // current balance
+
   }, {
     key: 'balance',
     value: function balance(_n) {
@@ -108,6 +111,7 @@ var Wallet = function () {
     value: function createCards() {
       var printContainer = document.querySelector('#cards');
       this.data.map(function (card, index) {
+
         // HTML Template
         var template = '\n          <li data-id=' + (card.id - 1) + '>\n            <img src="./img/visa.png" alt="card" />\n            <p>' + card.number + '</p>\n            <p>Valid Thru: ' + card.valid + '</p>\n          </li>\n        ';
         // print html
@@ -123,6 +127,7 @@ var Wallet = function () {
       if (_id === undefined) {
         _id = 0;
       }
+
       var printContainer = document.querySelector('#transactionList');
       printContainer.innerHTML = null; // clean the old content before insert
 
@@ -137,9 +142,9 @@ var Wallet = function () {
           // checking the transaction type
           var transactionType = void 0;
           if (transaction.price.charAt(0) === '-') {
-            transactionType = 'negative';
+            transactionType = 'withdrawn';
           } else {
-            transactionType = 'positive';
+            transactionType = 'deposit';
           }
 
           var template = '\n          <li>\n            <div class="transactionIcons"><span class="plus">+</span></div>\n            <div>\n              <h2>' + transaction.store + '</h2>\n              <p>' + transaction.description + ', ' + transaction.date + '</p>\n            </div>\n            <span class="transactionValue ' + transactionType + '">' + transaction.price + '</span>\n          </li>\n        ';

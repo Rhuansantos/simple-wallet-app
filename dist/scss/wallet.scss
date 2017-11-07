@@ -5,7 +5,13 @@ body{
 	font-family: 'Open Sans', sans-serif;
 	background: $yellow;
   padding: 20px;
-  transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+
+	// blocking user from copy information
+	-webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;     
+  user-select: none;          
 }
 
 main{
@@ -41,10 +47,20 @@ main{
   @media (max-width: 770px) { 
     padding: 10px;
     overflow: hidden;
-  }
-	h1{
-		margin-bottom: 50px;
-		padding-left: 20px;
+	}
+	header{
+		display: flex;
+		h1{
+			margin-bottom: 50px;
+			padding-left: 20px;
+			flex-grow: 1;
+		}
+		.add-cards{
+			font-size: 24px;
+			font-weight: 700;
+			margin-right: 30px;
+			color: $poloBlue;
+		}
 	}
 	#cards {
 		li{
@@ -62,14 +78,24 @@ main{
 			transition: all 200ms ease-in;
 			transform: scale(1);
 			cursor: pointer;
+			&:before {
+				content: '';
+				display: block;
+				min-width: 200px;
+				height: 150px;
+				position: absolute;
+				// background: red;
+				z-index: 1;
+			}
 			&:hover{
 				border:solid 5px $poloBlue;
 				transition: all 200ms ease-in;
 				transform: scale(1.1);
-      }
+			}
 			p, img{
 				color: $gray;
 				margin-bottom: 15px;
+				user-select: all;
       }
         // for cards
       @media (max-width: 660px) { 
@@ -103,6 +129,7 @@ main{
 		height: 90px;
     margin-bottom: 50px;
 		.balance{
+			width: 150px;
 			margin-left: auto;
 			font-size: 36px;
 			font-weight: 700;
@@ -117,9 +144,11 @@ main{
   #containerList{
     overflow: scroll;
     height: auto;
-    max-height: 500px;;
+    max-height: 500px;
   }
-
+  .transactionList {
+    transition: all 5s;
+  }
 	#transactionList li{
 		list-style: none;
 		margin-bottom: 50px;
@@ -166,8 +195,13 @@ main{
 		.transactionValue{
 			font-size: 18px;
 			font-weight: 700;
-			color: $green;
 			margin-top: 15px;
+		}
+		.deposit{
+			color: $green;
+		}
+		.withdrawn{
+			color: $poloBlue;
 		}
 	}
 }
