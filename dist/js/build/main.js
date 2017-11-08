@@ -111,7 +111,6 @@ var Wallet = function () {
     value: async function createCards() {
       var printContainer = document.querySelector('#cards');
       this.data.map(function (card, index) {
-        console.log(card.number);
         var template = '\n          <li class="' + (index == 0 ? 'active' : '') + '" data-id=' + index + '>\n            <img src="./img/' + card.company + '.png" alt="card" />\n            <p>**** **** **** ' + card.number.toString().slice(-4) + '</p>\n            <p>Valid Thru: ' + card.valid + '</p>\n          </li>\n        ';
         // print html
         printContainer.insertAdjacentHTML('beforeend', template);
