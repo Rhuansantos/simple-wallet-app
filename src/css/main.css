@@ -134,7 +134,7 @@ main {
     height: auto;
     max-height: 500px; }
   #balanceSection #transactionList {
-    transition: all 5s;
+    transition: all .5s;
     padding-right: 10px;
     height: 600px; }
   #balanceSection #transactionList li {
