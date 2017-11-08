@@ -142,14 +142,19 @@ var Wallet = function () {
         _this2.data[_id].transactions.map(function (transaction, index) {
 
           // checking the transaction type
-          var transactionType = void 0;
+          var type = {};
+
           if (transaction.price.charAt(0) === '-') {
-            transactionType = 'withdrawn';
+            type.transaction = 'withdrawn';
+            type.symbol = '-';
+            type.class = 'minus';
           } else {
-            transactionType = 'deposit';
+            type.transaction = 'deposit';
+            type.symbol = '+';
+            type.class = 'plus';
           }
 
-          var template = '\n          <li>\n            <div class="transactionIcons"><span class="plus">+</span></div>\n            <div>\n              <h2>' + transaction.store + '</h2>\n              <p>' + transaction.description + ', ' + transaction.date + '</p>\n            </div>\n            <span class="transactionValue ' + transactionType + '">' + transaction.price + '</span>\n          </li>\n        ';
+          var template = '\n          <li>\n            <div class="transactionIcons"><span class="' + type.class + '"></span>' + type.symbol + '</div>\n            <div>\n              <h2>' + transaction.store + '</h2>\n              <p>' + transaction.description + ', ' + transaction.date + '</p>\n            </div>\n            <span class="transactionValue ' + type.transaction + '">' + transaction.price + '</span>\n          </li>\n        ';
 
           printContainer.insertAdjacentHTML('beforeend', template);
         });
