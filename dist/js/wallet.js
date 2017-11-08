@@ -63,14 +63,11 @@ constructor() {
   async createCards() {
     const printContainer = document.querySelector('#cards');
       this.data.map((card, index) => {
-        // let active;
-        // if(index == 0){
-        //   active = 'active';
-        // }
+        console.log(card.number);
         let template = `
           <li class="${index == 0 ? 'active' : ''}" data-id=${index}>
-            <img src="./img/visa.png" alt="card" />
-            <p>${card.number}</p>
+            <img src="./img/${card.company}.png" alt="card" />
+            <p>**** **** **** ${card.number.toString().slice(-4)}</p>
             <p>Valid Thru: ${card.valid}</p>
           </li>
         `;
