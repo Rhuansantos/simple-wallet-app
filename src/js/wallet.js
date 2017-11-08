@@ -98,22 +98,27 @@ constructor() {
       this.data[_id].transactions.map((transaction, index) => {
         
         // checking the transaction type
-        let transactionType;
+        let type = {};
+        
         if(transaction.price.charAt(0) === '-'){
-          transactionType = 'withdrawn';
+          type.transaction = 'withdrawn';
+          type.symbol = '-';
+          type.class = 'minus';
         }
         else{
-          transactionType = 'deposit';
+          type.transaction = 'deposit';
+          type.symbol = '+';
+          type.class = 'plus';
         }
 
         let template = `
           <li>
-            <div class="transactionIcons"><span class="plus">+</span></div>
+            <div class="transactionIcons"><span class="${type.class}"></span>${type.symbol}</div>
             <div>
               <h2>${transaction.store}</h2>
               <p>${transaction.description}, ${transaction.date}</p>
             </div>
-            <span class="transactionValue ${transactionType}">${transaction.price}</span>
+            <span class="transactionValue ${type.transaction}">${transaction.price}</span>
           </li>
         `;
 
