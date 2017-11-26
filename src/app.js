@@ -1,6 +1,7 @@
 const express = require('express');
 const glob = require('glob');
 const bodyParser = require('body-parser');
+const path = require('path');
 const pug = require('pug');
 
 module.exports = function(app) {
@@ -11,6 +12,7 @@ module.exports = function(app) {
   
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: true}));
+  app.use(express.static(path.join(__dirname, 'public')));
   
   // include all the controllers
   let controllers = glob.sync(__dirname + '/controllers/*.js');
