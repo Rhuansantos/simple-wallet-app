@@ -1,8 +1,9 @@
 {
-  "name": "freelancer",
+  "name": "simple-wallet-app",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "test": "",
   "scripts": {},
   "author": "",
   "license": "ISC",
