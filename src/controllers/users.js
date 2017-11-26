@@ -8,5 +8,7 @@ module.exports = function(app) {
 }
 
 router.get('/user', function(req, res, next) {
-  res.send(obj);
+  // res.send(obj);
+  
+  res.render('index', obj);
 });
