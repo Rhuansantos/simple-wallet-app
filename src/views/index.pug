@@ -1,4 +1,16 @@
 extends layout
 
 block content
-  h1 hello
+  main
+    section#cardSection
+      header
+        h1 My Wallets
+        span.add-cards +
+      // implement swipe for mobile
+      ul#cards
+    section#balanceSection
+      header
+        h1 Current balance
+        h1.balance
+      #containerList
+        ul#transactionList
