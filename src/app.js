@@ -4,14 +4,13 @@ const bodyParser = require('body-parser');
 const pug = require('pug');
 
 module.exports = function(app) {
-  // Configure view engine to render EJS templates.
+  
+  // Configure view engine to render PUG templates
   app.set('views', __dirname + '/views');
   app.set('view engine', 'pug');
-
-  // app.use(forceSsl);
+  
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: true}));
-
 
   let models = glob.sync(__dirname + '/models/*.js');
   models.forEach(function(modelFileName){
