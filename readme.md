@@ -1,7 +1,6 @@
-# Red Ventures
 ## simple-wallet-app
 
-[live example](https://rhuansantos.com/red-ventures-simple-wallet-app/)
+[live example](https://rhuansantos.com/example/red-ventures-simple-wallet-app/)
 
 ### Instructions
 
